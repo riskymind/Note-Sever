@@ -5,6 +5,7 @@ val postgresql_version: String by project
 val hikari_version: String by project
 val exposed_version: String by project
 
+
 plugins {
     application
     kotlin("jvm") version "1.7.0"
@@ -43,4 +44,6 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")
+    // Location
+    implementation("io.ktor:ktor-server-locations-jvm:$ktor_version")
 }

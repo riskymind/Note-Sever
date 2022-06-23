@@ -4,6 +4,7 @@ import com.example.auth.JwtService
 import com.example.auth.hash
 import com.example.data.model.User
 import com.example.repository.Repo
+import com.example.routes.UserRoutes
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -18,6 +19,9 @@ fun Application.configureRouting() {
     val hashFunction = { s: String -> hash(s) }
 
     routing {
+
+        UserRoutes(db, jwtService, hashFunction)
+
         // localhost:8080/home
         get("/") {
             call.respondText("Hello World!")
