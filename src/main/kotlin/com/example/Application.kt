@@ -8,6 +8,7 @@ import com.example.plugins.*
 import com.example.repository.DatabaseFactory
 import com.example.repository.Repo
 import io.ktor.server.application.*
+import io.ktor.server.auth.*
 import io.ktor.server.locations.*
 
 fun main() {

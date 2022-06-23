@@ -33,7 +33,7 @@ fun Route.UserRoutes(
     hashFunction: (String) -> String
 ) {
 
-    // localhost:/v1/users/register --> register user
+    // localhost:/v1/users/register --> Register user
     post("/v1/users/register") {
         val registerRequest = try {
             // receive the request type
@@ -54,7 +54,7 @@ fun Route.UserRoutes(
         }
     }
 
-    // localhost:/v1/users/login --> login user
+    // localhost:/v1/users/login --> Login user
     post("/v1/users/login") {
         val loginRequest = try {
             call.receive<LoginRequest>()

@@ -1,5 +1,6 @@
 package com.example.repository
 
+import com.example.data.table.NoteTable
 import com.example.data.table.UserTable
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
@@ -18,6 +19,7 @@ object DatabaseFactory {
         transaction {
             // this will create [ UserTable ] if it doesn't exist
             SchemaUtils.create(UserTable)
+            SchemaUtils.create(NoteTable)
         }
     }
 

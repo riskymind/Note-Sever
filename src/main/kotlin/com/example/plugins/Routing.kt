@@ -4,6 +4,7 @@ import com.example.auth.JwtService
 import com.example.auth.hash
 import com.example.data.model.User
 import com.example.repository.Repo
+import com.example.routes.NoteRoutes
 import com.example.routes.UserRoutes
 import io.ktor.server.routing.*
 import io.ktor.http.*
@@ -21,6 +22,7 @@ fun Application.configureRouting() {
     routing {
 
         UserRoutes(db, jwtService, hashFunction)
+        NoteRoutes(db, hashFunction)
 
         // localhost:8080/home
         get("/") {
