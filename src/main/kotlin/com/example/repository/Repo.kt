@@ -9,6 +9,7 @@ import org.jetbrains.exposed.sql.select
 
 class Repo {
 
+    // add user to user table
     suspend fun addUser(user: User) {
         dbQuery {
             UserTable.insert { userTable ->
@@ -20,6 +21,7 @@ class Repo {
     }
 
 
+    // search user by email
     suspend fun findUserByEmail(email: String) = dbQuery {
         UserTable.select { UserTable.email.eq(email) }
             .map { rowToUser(it) }

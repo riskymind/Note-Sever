@@ -1,5 +1,9 @@
 package com.example.plugins
 
+import com.example.auth.JwtService
+import com.example.auth.hash
+import com.example.data.model.User
+import com.example.repository.Repo
 import io.ktor.server.routing.*
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -7,6 +11,11 @@ import io.ktor.server.response.*
 import io.ktor.server.request.*
 
 fun Application.configureRouting() {
+
+
+    val db = Repo()
+    val jwtService = JwtService()
+    val hashFunction = { s: String -> hash(s) }
 
     routing {
         // localhost:8080/home
@@ -38,6 +47,17 @@ fun Application.configureRouting() {
                 val body = call.receive<String>()
                 call.respond(body)
             }
+        }
+
+        // testing jwt token
+        get("/token") {
+            val email = call.request.queryParameters["email"]!!
+            val userName = call.request.queryParameters["name"]!!
+            val password = call.request.queryParameters["password"]!!
+
+            val user = User(email, hashFunction(password), userName)
+
+            call.respond(jwtService.generateToken(user))
         }
 
 
