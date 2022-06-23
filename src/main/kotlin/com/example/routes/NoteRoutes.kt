@@ -62,7 +62,8 @@ fun Route.NoteRoutes(
                 val notes = db.getAllNotes(email)
                 call.respond(HttpStatusCode.OK, notes)
             } catch (e: Exception) {
-                call.respond(HttpStatusCode.Conflict, emptyList<Note>())
+                call.respond(HttpStatusCode.Unauthorized, SimpleResponse(false, "Who are you?"))
+                return@get
             }
         }
 
