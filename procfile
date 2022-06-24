@@ -1,1 +1,1 @@
-web: build/install/NoteAppServer/bin/NoteAppServer
+web: ./build/install/NoteAppServer/bin/NoteAppServer

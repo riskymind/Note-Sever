@@ -12,7 +12,7 @@ import io.ktor.server.auth.*
 import io.ktor.server.locations.*
 
 fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
+    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0") {
         DatabaseFactory.init()
         install(Locations)
 
