@@ -27,7 +27,7 @@ class UserRegisterRoute
 @Location(LOGIN_REQUEST)
 class UserLoginRoute
 
-fun Route.UserRoutes(
+fun Route.userRoutes(
     db: Repo,
     jwtService: JwtService,
     hashFunction: (String) -> String
@@ -46,6 +46,9 @@ fun Route.UserRoutes(
 
         // add use to DB
         try {
+            println("email: ${registerRequest.email}")
+            println("password: ${registerRequest.password}")
+            println("name: ${registerRequest.name}")
             val user = User(registerRequest.email, hashFunction(registerRequest.password), registerRequest.name)
             db.addUser(user)
             call.respond(HttpStatusCode.OK, SimpleResponse(true, jwtService.generateToken(user)))
